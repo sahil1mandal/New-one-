@@ -1,0 +1,89 @@
+SELECT kitd_unique_id, * FROM KI_PLAYER_DETAIL --ATHLETE
+
+SELECT kitd_unique_id,  * FROM KI_OFFICIAL_DETAIL --COACH -2, SPORTS SCIENTIST --103
+
+SELECT kitd_unique_id,* FROM KI_ACADEMY_DETAIL --Academy
+
+SELECT * FROM KI_USER_MASTER  -- SDO 47, RD 46, COACHHEAD,HPM,HPD
+
+select * from ki_scheme_master
+
+select * from ki_sports_science_master
+
+SELECT * FROM ki_sport_detail
+
+---------------------like OPERATOR
+
+SELECT * FROM KI_USER_MASTER WHERE user_namE LIKE '%OPS%'
+
+
+
+userName>>>>>SDO_sahil
+Pass>>>>>Admin@123
+
+username>>NCOE_TESTKANPUR
+kitd_uniqueKID>>>>NCOEAA212MS
+Pass>>>Ncoe@123
+
+
+User>>>hello@yopmail.com
+Pass>> Coach@123
+kid CGO000AM99
+
+
+19.168.23.253
+
+
+
+
+
+
+-------------------------------------------------
+
+
+
+SELECT kitd_unique_id, * FROM KI_PLAYER_DETAIL --ATHLETE
+
+SELECT kitd_unique_id,  * FROM KI_OFFICIAL_DETAIL --COACH -2, SPORTS SCIENTIST --103
+
+SELECT kitd_unique_id,* FROM KI_ACADEMY_DETAIL where kitd_unique_id = 'NCOEAA212MS' --Academy
+
+SELECT * FROM KI_USER_MASTER  -- SDO 47, RD 46, COACHHEAD,HPM,HPD
+
+select * from ki_scheme_master
+
+select * from ki_sports_science_master
+
+SELECT * FROM ki_sport_detail
+
+SELECT * FROM KI_USER_MASTER WHERE user_namE LIKE '%OPS%'
+
+select kitd_unique_id, * FROM ki_player_detail where first_name ='sajid'
+
+select kitd_unique_id, * from  ki_player_detail where first_name = 'OJHA'
+
+SELECT	sport_short_name, * from ki_sport_detail where sport_name in  ('Shooting', 'Athletics', '')
+
+SELECT * from ki_sports_scientist_education_detail
+
+select kitd_unique_id, * from ki_official_detail where kitd_unique_id = 'SPT001AM97'
+
+select * from ki_user_role_master where role_detail_id = 103
+
+select * from ki_player_detail where kitd_unique_id = 'BAAA137M97' --230250 --BAAA137M97
+
+select * from ki_player_achievement_detail where player_detail_id = 230250
+
+select * from ki_player_achievement where player_detail_id = 230250 -- 194888
+
+delete from ki_player_achievement where player_achievement_detail_id = 194888
+
+select competition_level, * from ki_player_achievement where competition_level = 'state'
+
+select kitd_unique_id, * from ki_official_detail where kitd_unique_id = 'CGO000AM99'
+
+
+Academy 
+happy123@yopmail.com
+FOAA000UP10
+Pass>> Admin@321
