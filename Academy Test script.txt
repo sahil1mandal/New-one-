@@ -1,0 +1,110 @@
+package nsrs_1;
+
+import java.time.Duration;
+import java.util.List;
+
+import org.junit.Test;
+import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.Keys;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.Select;
+
+public class registration {
+@Test
+	public static void main(String[] args) throws InterruptedException {
+		System.setProperty("webdriver.chrome.driver", "D:\\Automation\\chromedriver_win32\\chromedriver.exe");
+		WebDriver driver = new ChromeDriver();
+		JavascriptExecutor js = (JavascriptExecutor) driver;
+		
+		
+		
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
+		driver.manage().window().maximize();
+//		Login functionality
+			driver.get("http://192.168.23.253:51/");
+			Thread.sleep(2000);
+			driver.findElement(By.className("open_button")).click();
+			driver.findElement(By.linkText("Sign Up")).click();
+			Thread.sleep(1000);
+			driver.findElement(By.xpath("//a[@href='/Registration/AcademyAI']")).click();
+			
+			js.executeScript("window.scrollBy(0,1000)");
+			
+			//	Fill the data                input field						passed data
+			Thread.sleep(7000);
+			Select type = new Select(driver.findElement(By.id("legal_entity")));         // Type dropdown
+			type.selectByVisibleText("Central Government");
+			Select status = new Select(driver.findElement(By.id("Academy_Status")));   //Academy dropdown
+			status.selectByVisibleText("Non-profit organisation");
+			
+			driver.findElement(By.id	("registration_number")).sendKeys			("ASDF1234");
+			driver.findElement(By.id	("academy_name")).sendKeys				("Noida");
+			
+			Select year = new Select(driver.findElement(By.id("academy_year")));   //Year dropdown
+			year.selectByVisibleText("2009");
+			
+			Select ddl = new Select(driver.findElement(By.id("DDLRelation")));   //DDl dropdown
+			ddl.selectByVisibleText("C/o");
+			
+			driver.findElement(By.id	("address_of_name")).sendKeys		("Nawada Rasulpoor");
+			driver.findElement(By.id	("house_bldg_apt")).sendKeys		("Neelam rooms");
+			driver.findElement(By.id	("post_office")).sendKeys		("201301");//postal code
+			driver.findElement(By.id	("street")).sendKeys		        ("Govt school");
+			driver.findElement(By.id	("landmark")).sendKeys			("school");
+			driver.findElement(By.id("contact_person")).click();
+			Thread.sleep(2000);
+			
+			Select city = new Select(driver.findElement(By.id("city")));   
+			city.selectByVisibleText("Ghaziabad");
+			driver.findElement(By.id	("designation")).sendKeys		("Coach");
+			driver.findElement(By.id	("email_id")).sendKeys		("sahil1234@yopmail.com");
+			driver.findElement(By.id    ("mobile_number")).sendKeys ("8456365485");
+			 //sport
+			Select Sports = new Select(driver.findElement(By.id("Sports[0].sport_detail_id")));
+			Sports.selectByVisibleText("Badminton");
+			Thread.sleep(2500);
+//			Event 
+			Select Event = new Select(driver.findElement(By.id("Sports[0].Event_Category_id"))); //event
+			Event.selectByValue("15");
+			Thread.sleep(1500);
+			driver.findElement(By.xpath("//ul[@class='select2-choices']")).click();
+			Thread.sleep(1500);
+			//driver.findElement(By.xpath("//input[@id='s2id_autogen350']")).sendKeys("boys");
+			//Thread.sleep(2000);
+			List<WebElement> options = driver.findElements(By.xpath("//div[@class='select2-result-label']"));
+			
+			for(WebElement option :options)
+			{
+				System.out.println(option.getText());
+				if (option.getText().equalsIgnoreCase("Boys Singles"))
+				{
+					System.out.println(option.getText());
+					option.click();
+					Thread.sleep(1500);
+					break;
+				}
+			}
+			
+			driver.findElement(By.xpath("//input[@id='Sports_0__SanctionedStrengthMen']")).sendKeys("20");
+			driver.findElement(By.xpath("//input[@id='Sports_0__SanctionedStrengthWomen']")).sendKeys("10");
+			Thread.sleep(2000);
+			driver.findElement(By.xpath("//input[@id='login_password']")).sendKeys("Admin@123");
+			driver.findElement(By.xpath("//input[@id='confirm_password']")).sendKeys("Admin@123");
+			
+	
+////			click on "I agree" checkbox; contains hyperlink
+			JavascriptExecutor js1 = (JavascriptExecutor) driver;
+			WebElement element = driver.findElement(By.xpath("//label[@for='terms']"));
+			js1.executeScript("arguments[0].click()",element);
+//			
+			driver.findElement(By.xpath("//button[@id='AcademyAILink']")).click();
+			
+			//driver.quit();
+			
+			
+			
+}
+}
