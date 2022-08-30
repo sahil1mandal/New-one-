@@ -1,0 +1,87 @@
+package nsrs_1;
+
+import java.time.Duration;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.Select;
+
+public class signup_coach {
+
+	public static void main(String[] args) throws InterruptedException {
+		// TODO Auto-generated method stub
+		System.setProperty("webdriver.chrome.driver", "D:\\Automation\\chromedriver_win32\\chromedriver.exe");
+		WebDriver driver = new ChromeDriver();
+		JavascriptExecutor js = (JavascriptExecutor) driver;
+		
+		//login coach
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
+		driver.manage().window().maximize();
+		driver.get("http://192.168.23.253:51/");
+		driver.findElement(By.xpath("//button[normalize-space()='X']")).click();
+		Thread.sleep(1000);
+		driver.findElement(By.xpath("//a[normalize-space()='Sign Up']")).click();
+		driver.findElement(By.xpath("//a[@href='/Registration/SportsScientistRegistration']")).click();
+		
+		//Picture add
+		driver.findElement(By.xpath("//input[@id='profile_image_btn']")).sendKeys("C:\\Users\\ACER\\Pictures\\Saved Pictures\\types-of-manual-testing.png");
+		Thread.sleep(2000);
+		//First name 
+		driver.findElement(By.xpath("//input[@id='first_name']")).sendKeys("Scientist one");
+		Thread.sleep(2000);
+		//Middle name
+		driver.findElement(By.xpath("//input[@id='middle_name']")).sendKeys("new");
+		Thread.sleep(2000);
+		//gender
+		Select scgender = new Select(driver.findElement(By.id("gender")));
+		scgender.selectByValue("M");	
+		Thread.sleep(2000);
+		//DOB
+//		WebElement testDropDown = driver.findElement(By.id("testingDropdown"));  
+//		Select dropdown = new Select(testDropDown);
+		driver.findElement(By.xpath("//input[@id='userDateofBirth']")).click();
+		driver.findElement(By.xpath("//input[@id='userDateofBirth']")).clear();
+		Thread.sleep(5000);
+//		driver.findElement(By.xpath("//*[@id=\"ui-datepicker-div\"]/table/tbody/tr[2]/td[4]/a")).sendKeys("10");
+//		driver.findElement(By.xpath("//*[@id=\"ui-datepicker-div\"]/div/div/select[1]")).sendKeys("JAN");
+//		driver.findElement(By.xpath("//*[@id=\"ui-datepicker-div\"]/div/div/select[2]")).sendKeys("1998");
+		//driver.findElement(By.xpath("//input[@id='userDateofBirth']")).clear();
+		driver.findElement(By.xpath("//input[@id='userDateofBirth']")).sendKeys("04/08/1998");
+		Thread.sleep(1000);
+		//pincode
+		driver.findElement(By.xpath("//input[@id='post_office']")).sendKeys("201301");
+		Thread.sleep(2000);
+		driver.findElement(By.xpath("//div[@class='registration-page p-5']")).click();
+		Thread.sleep(1000);
+		//email.id
+		driver.findElement(By.xpath("//input[@id='filladdress']")).click();
+		//Mobile number
+		driver.findElement(By.xpath("//input[@id='MobileNoUser']")).sendKeys("9876542356");
+		driver.findElement(By.xpath("//input[@id='nsf_email_id']")).sendKeys("helloworld@gmail.com");
+		Thread.sleep(1000);
+		Select dicipline = new Select(driver.findElement(By.id("sport_detail_id")));
+		dicipline.selectByVisibleText("Physiology");
+		Thread.sleep(2000);
+		driver.findElement(By.xpath("(//input[@id='login_password'])[1]")).sendKeys("Admin@123");
+		driver.findElement(By.xpath("//input[@id='confirm_password']")).sendKeys("Admin@123");
+		Thread.sleep(2000);
+		JavascriptExecutor js1 = (JavascriptExecutor) driver;
+		WebElement element = driver.findElement(By.xpath("//label[@for='terms_conditions']"));
+		js1.executeScript("arguments[0].click()",element);
+		Thread.sleep(5000);
+		
+		driver.findElement(By.xpath("//span[normalize-space()='Save and Continue']")).click();
+		//driver.close();
+		
+		
+		
+		
+	
+		
+		
+	}
+
+}
