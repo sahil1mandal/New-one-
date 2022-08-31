@@ -44,13 +44,25 @@ public class signup_coach {
 //		Select dropdown = new Select(testDropDown);
 		driver.findElement(By.xpath("//input[@id='userDateofBirth']")).click();
 		driver.findElement(By.xpath("//input[@id='userDateofBirth']")).clear();
-		Thread.sleep(5000);
+		Thread.sleep(2000);
 //		driver.findElement(By.xpath("//*[@id=\"ui-datepicker-div\"]/table/tbody/tr[2]/td[4]/a")).sendKeys("10");
 //		driver.findElement(By.xpath("//*[@id=\"ui-datepicker-div\"]/div/div/select[1]")).sendKeys("JAN");
 //		driver.findElement(By.xpath("//*[@id=\"ui-datepicker-div\"]/div/div/select[2]")).sendKeys("1998");
 		//driver.findElement(By.xpath("//input[@id='userDateofBirth']")).clear();
-		driver.findElement(By.xpath("//input[@id='userDateofBirth']")).sendKeys("04/08/1998");
+		//driver.findElement(By.xpath("//input[@id='userDateofBirth']")).sendKeys("04/08/1998");
+		Select month = new Select(driver.findElement(By.xpath("(//select[@class='ui-datepicker-month'])[1]")));
+		month.selectByIndex(1);
+		Thread.sleep(2000);
+		
+		Select year = new Select(driver.findElement(By.xpath("//select[@class='ui-datepicker-year']")));
+		year.selectByVisibleText("1990");
+		
 		Thread.sleep(1000);
+		driver.findElement(By.linkText("24")).click();
+		Thread.sleep(1000);
+		
+		
+		
 		//pincode
 		driver.findElement(By.xpath("//input[@id='post_office']")).sendKeys("201301");
 		Thread.sleep(2000);
@@ -75,9 +87,6 @@ public class signup_coach {
 		
 		driver.findElement(By.xpath("//span[normalize-space()='Save and Continue']")).click();
 		//driver.close();
-		
-		
-		
 		
 	
 		
